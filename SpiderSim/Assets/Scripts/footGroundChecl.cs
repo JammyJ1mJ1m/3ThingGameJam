@@ -8,8 +8,17 @@ public class footGroundChecl : MonoBehaviour
      * The wanted length for the Raycast.
      */
     public float distance = 100f;
-    void Update()
+
+    public Transform footIK;
+
+
+    
+    void LateUpdate()
     {
+
+        Vector3 fromPosition = transform.position;
+        Vector3 toPosition = footIK.transform.position;
+        Vector3 direction = toPosition - fromPosition;
         /*
          * Create the hit object.
          */
@@ -31,8 +40,25 @@ public class footGroundChecl : MonoBehaviour
             /*
              * Move the object to the target location.
              */
-            transform.position = targetLocation;
+            if (direction.magnitude <= 0.5f)
+            {
+                transform.position = targetLocation;
+
+            }
+            else
+            {
+                Debug.Log("the distance is greater than 2");
+                transform.position = toPosition;
+            }
+
+            Debug.DrawLine(transform.position, hit.point, Color.red);
         }
+
+        Debug.Log(direction);
+
+        /*
+        
+        */
     }
 }
 

@@ -4,67 +4,44 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-
-    //public CharacterController controller;
-
-    /*
-    public float speed = 5f;
-    public float gravity = -19.62f;
-    public float jumpHeight = 3f;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-    Vector3 velocity;
-    bool isGrounded;
-    */
-    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Horizontal"))
+        if(Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * Time.deltaTime);
-
+            transform.Translate(Vector3.forward * Time.deltaTime * 2);
         }
 
-        /*
-        if (Input.GetButtonUp("Fire3"))
+        if (Input.GetKey(KeyCode.S))
         {
-            speed = 5f;
+            transform.Translate(Vector3.forward * -1 * Time.deltaTime * 2);
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0)
+        if (Input.GetKey(KeyCode.D))
         {
-            velocity.y = -2f;
+            transform.Translate(Vector3.right * Time.deltaTime * 2);
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-
-        controller.Move(move * speed * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKey(KeyCode.A))
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            transform.Translate(Vector3.right * -1 * Time.deltaTime * 2);
         }
 
-        velocity.y += gravity * Time.deltaTime;
-        
-
-        controller.Move(velocity * Time.deltaTime);
-
-
-
-        // Move the object forward along its z axis 1 unit/second.
-        transform.Translate(Vector3.forward * Time.deltaTime);
-
-        // Move the object upward in world space 1 unit/second.
-        transform.Translate(Vector3.up * Time.deltaTime, Space.World);
-    */
+        if (Input.GetKey(KeyCode.E))
+        {
+            //transform.Rotate(0, -2, 0);
+            transform.Rotate(0, 75 * Time.deltaTime, 0);
         }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.Rotate(0, -75 * Time.deltaTime, 0);
+
+        }
+    }
 }

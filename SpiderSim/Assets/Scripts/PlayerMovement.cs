@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class playerMovement : MonoBehaviour
 {
 
-    public CharacterController controller;
+    //public CharacterController controller;
 
+    /*
     public float speed = 5f;
     public float gravity = -19.62f;
     public float jumpHeight = 3f;
@@ -15,24 +16,26 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     Vector3 velocity;
     bool isGrounded;
-
-
+    */
+    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire3"))
+        if(Input.GetButtonDown("Horizontal"))
         {
-            speed = speed * 2;
+            transform.Translate(Vector3.forward * Time.deltaTime);
 
         }
+
+        /*
         if (Input.GetButtonUp("Fire3"))
         {
             speed = 5f;
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if(isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -45,14 +48,23 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;
-
+        
 
         controller.Move(velocity * Time.deltaTime);
-    }
+
+
+
+        // Move the object forward along its z axis 1 unit/second.
+        transform.Translate(Vector3.forward * Time.deltaTime);
+
+        // Move the object upward in world space 1 unit/second.
+        transform.Translate(Vector3.up * Time.deltaTime, Space.World);
+    */
+        }
 }

@@ -6,7 +6,7 @@ public class targetGrounding : MonoBehaviour
 {
     public float distance = 100f;
 
-    void LateUpdate()
+    void Update()
     {
 
       
@@ -17,7 +17,7 @@ public class targetGrounding : MonoBehaviour
 
             Vector3 targetLocation = hit.point;
 
-            targetLocation += new Vector3(0, transform.localScale.y / 2, 0);
+            targetLocation += new Vector3(0, transform.localScale.y  / 2, 0);
             
             transform.position = targetLocation;
             

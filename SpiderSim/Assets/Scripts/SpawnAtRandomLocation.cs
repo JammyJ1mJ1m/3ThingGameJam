@@ -20,32 +20,38 @@ public class SpawnAtRandomLocation : MonoBehaviour
 
             spawnIndex = Random.Range(0, spawnPoints.Length);
             // Instantiate object
-            Instantiate(blockPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+            //Instantiate(blockPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
 
-            if (spawnedObjects.Contains(spawnIndex))
+            if (!spawnedObjects.Contains(spawnIndex))
             {
+                spawnedObjects.Add(spawnIndex);
+
                 spawnIndex = Random.Range(0, spawnPoints.Length);
 
                 Instantiate(blockPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-                
-                spawnedObjects.Add(spawnIndex);
-                
-                Debug.LogWarning("if" + spawnIndex);
+
+                Debug.LogError("This is spawn index in if" + spawnIndex);
 
             }
             else
             {
+                i = i - 1;
+            }
+            /*
+            else
+            {
                 spawnedObjects.Add(spawnIndex);
-                
-                Debug.LogWarning("else" + spawnIndex);
+
+                Debug.LogError("This is spawn index in else" + spawnIndex);
+
 
                 foreach (int x in spawnedObjects)
                 {
                     Debug.Log(x.ToString());
                 }
 
-
             }
+            */
         }
     }
     

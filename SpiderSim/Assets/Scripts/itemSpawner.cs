@@ -15,10 +15,8 @@ public class itemSpawner : MonoBehaviour
 
     System.Random r = new System.Random();
 
-    private void Start()
-    {
-        
-    }
+    //Instantiate(blockPrefab, spawnPoints[index].position, Quaternion.identity);
+
 
     private void Update()
     {
@@ -36,7 +34,7 @@ public class itemSpawner : MonoBehaviour
 
         //int randomIndex = Random.Range(0, spawnPoints.Length);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i <= 2; i++)
         {
             int index = r.Next(0, spawnPoints.Length);
             spawnedPoints.Add(index);
@@ -45,11 +43,6 @@ public class itemSpawner : MonoBehaviour
             if (spawnedPoints.Contains(index) == true)
             {
                 i = i + 1;
-            }
-            else
-            {
-                Instantiate(blockPrefab, spawnPoints[index].position, Quaternion.identity);
-
             }
 
         }
